@@ -1,23 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:workwaves/features/auth/presentation/pages/landing_page.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:workwaves/features/authentication/presentation/authentication_bloc.dart';
+import 'package:workwaves/features/authentication/presentation/authentication_page.dart';
+import 'package:workwaves/injection_container.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  init(); // Initialize dependency injection container
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'WorkWaves',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+        primarySwatch: Colors.blue,
       ),
-      home: const LandingPage(),
+      home: BlocProvider(
+        create: (context) => sl<AuthenticationBloc>(),
+        child: const AuthenticationPage(),
+      ),
     );
   }
 }
