@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:workwaves/pages/login_page.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 void main() async {
   runApp(const MyApp());
