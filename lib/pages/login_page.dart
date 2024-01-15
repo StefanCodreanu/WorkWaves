@@ -22,14 +22,16 @@ class _LoginPageState extends State<LoginPage> {
             color: Colors.white,
           ),
         ),
-        title: Row(children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: SvgPicture.asset(
-              "assets/logo.svg",
-            ),
-          )
-        ]),
+        title: Row(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: SvgPicture.asset(
+                "assets/logo.svg",
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
